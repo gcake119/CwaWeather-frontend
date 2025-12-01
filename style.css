@@ -1,0 +1,287 @@
+:root {
+  /* 哆啦A夢配色 */
+  --dora-blue: #009eff;
+  --dora-red: #e92024;
+  --dora-white: #ffffff;
+  --dora-bell: #ffd500;
+  --dora-text: #333333;
+  --dora-bg: #f0f8ff;
+}
+
+/* Reset 簡化版 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background-color: var(--dora-bg);
+  /* 方格紙背景 */
+  background-image:
+    linear-gradient(#e0e0e0 1px, transparent 1px),
+    linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--dora-text);
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+/* 手繪盒子：任意門 / 卡片通用 */
+.hand-drawn-box {
+  border: 3px solid var(--dora-text);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Loading 畫面 */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--dora-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loading-icon {
+  font-size: 4rem;
+  animation: spin 2s infinite linear;
+}
+
+.loading-text {
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 頂部列 */
+.status-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin: 10px auto 0;
+  padding: 12px 16px;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 城市選單 */
+.city-select {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 8px 16px;
+  background: var(--dora-bell);
+  color: var(--dora-text);
+  border: 3px solid var(--dora-text);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* 更新時間 pill */
+.update-pill {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dora-blue);
+}
+
+/* App 標題 */
+.app-title {
+  text-align: center;
+  margin: 18px 0;
+  color: var(--dora-blue);
+  font-weight: 900;
+  text-shadow: 3px 3px 0 var(--dora-white),
+    -1px -1px 0 var(--dora-text);
+}
+
+/* 容器 */
+.container {
+  padding: 0 16px 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Hero 卡片：任意門造型 */
+.hero-card {
+  position: relative;
+  background: var(--dora-blue);
+  color: white;
+  padding: 28px 24px 24px;
+  margin-bottom: 24px;
+}
+
+/* 鈴鐺裝飾 */
+.bell-decoration {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.2));
+  animation: swing 2s infinite ease-in-out;
+}
+
+@keyframes swing {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(8deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-8deg);
+  }
+}
+
+/* Hero 內容 */
+.hero-period {
+  display: inline-block;
+  background: var(--dora-white);
+  color: var(--dora-text);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.hero-temp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.2));
+}
+
+.hero-temp {
+  font-size: 4.2rem;
+  font-weight: 900;
+  text-shadow: 4px 4px 0 var(--dora-text);
+}
+
+.hero-desc {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+/* 建議區 */
+.advice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.advice-item {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 10px 8px;
+  text-align: center;
+  color: var(--dora-text);
+}
+
+.advice-icon {
+  font-size: 1.8rem;
+  margin-bottom: 2px;
+}
+
+.advice-text {
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+/* 稍後預報 */
+.section-title {
+  font-size: 1rem;
+  color: var(--dora-text);
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.mini-card {
+  min-width: 130px;
+  background: var(--dora-white);
+  border: 2px solid var(--dora-text);
+  border-radius: 18px;
+  padding: 10px;
+  text-align: center;
+  flex-shrink: 0;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
+}
+
+.mini-time {
+  display: inline-block;
+  background: var(--dora-blue);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.mini-icon {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.mini-temp {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+/* RWD 微調 */
+@media (min-width: 480px) {
+  .hero-temp {
+    font-size: 4.5rem;
+  }
+
+  .hero-icon {
+    font-size: 4.5rem;
+  }
+
+  .mini-card {
+    min-width: 140px;
+  }
+}
